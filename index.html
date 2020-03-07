@@ -1,150 +1,28 @@
-<!DOCTYPE html>
-<html>
-<body>
-//VARIABLES BECAUSE CSS PREPROCESSORS ARE COOL
-@bone: #fff;
-@eggshell: #efeffe;
-@body-bg: #fefefe;
-@breakpoint-tablet: 800px;
-@breakpoint-mobile: 450px;
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Password Protected page</title>
+<script type="text/javascript">
+var s ="";
 
-body {
-  background: @body-bg;
-  background-image: linear-gradient(to bottom right, #973999, #f8598b, #f7bf00);
-  font-family: Helvetica, Arial, sans-serif;
-  min-height: 100vh;
-}
+while (s!= "mypassword")
+{
+s=prompt("please enter your password");
+if (s=="mypassword")
+{
+window.location.href="correct.html"; //page to redirect if password entered is correct
 
-.flex-box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 75px;
-  @media only screen and (max-width: @breakpoint-tablet) {
-    padding: 25px;
-  }
 }
+else
+{
+alert("Incorrect password-Try again");
 
-h1 {
-  color: @bone;
-  font-size: 3.5em;
-  line-height: 1.25;
-  text-align: center;
 }
-
-h3 {
-  color: @eggshell;
-  opacity: 0.7;
-  font-weight: 300;
-  font-style: italic;
-  :after {
-    content: "\005f";
-  }
-}
-
-h5 {
-  color: @eggshell;
-  font-size: 2em;
-  font-weight: 400;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  &:after {
-    content: "";
-    position: relative;
-    display: block;
-    padding-bottom: 5px;
-    width: 100%;
-    border-bottom: 2px solid #fff;
-  }
-}
-
-.passcode-area {
-  margin-top: 50px;
-  text-align: center;
-}
-
-.passcode-area > input {
-  background-color: @bone;
-  border: 2px solid #d6d6d6;
-  border-radius: 4px;
-  padding: 0;
-  margin: 25px 6px 0;
-  width: 65px;
-  height: 65px;
-  text-align: center;
-  font-size: 32px;
-  line-height: 1.29;
-  text-transform: uppercase;
-  background-clip: padding-box;
-  &:nth-child(3) {
-    margin-right: 25px;
-    @media only screen and (max-width: @breakpoint-mobile) {
-      margin-right: 6px;
-    }
-  }
-  &:focus {
-    -webkit-appearance: none;
-    border: 2px solid skyblue;
-    outline: 0;
-    box-shadow: 0px 0px 3px rgba(131, 192, 253, 0.5);
-  }
-}
-<div class="flex-box">
-    <h5>🔐👮🏻‍♂️</h5>
-    <h1>PassCode Boxes</h1>
-    <h3>Enter ze passcode<span></span></h3>
-    <div class="passcode-area">
-      <input autofocus type="text" maxlength="1">
-      <input type="text" maxlength="1">
-      <input type="text" maxlength="1">
-      <input type="text" maxlength="1">
-      <input type="text" maxlength="1">
-      <input type="text" maxlength="1">
-    </div>
-  </div>
-  <script>
-    //To Do: Add Visibility toggle  
-const inputs = document.querySelectorAll('.passcode-area input');
-inputs[0].focus();
-for (elem of inputs) {
-  elem.addEventListener('input', function() {
-    const value = this.value;
-    const nextElement = this.nextElementSibling;
-    if (value === '' || !nextElement) {
-      return;
-    }
-    nextElement.focus();
-  });
-}
-for (let elem of inputs) {
-  elem.addEventListener('keydown', function(event) {
-     //Right Arrow Key
-    if (event.keyCode == 39) {
-      this.nextElementSibling.focus();
-    }
-     //Left Arrow Key
-    //Add Highlight
-    if (event.keyCode == 37) {
-      this.previousElementSibling.focus();
-    }
-    //Backspace Key
-    if (event.keyCode == 8 && event.metaKey) {
-      console.log('🐰🥚 FOUND!!! Cmd + Backspace = clear all');
-      for (innerElem of inputs) {
-        innerElem.value = '';
-      }
-      inputs[0].focus();
-    } else if (event.keyCode == 8) {
-      if(elem.value === '') {
-        this.previousElementSibling.focus();
-        return;
-      }
-      elem.value = '';
-    }
-  });
 }
 </script>
+</head>
 
+<body>
 </body>
 </html>
